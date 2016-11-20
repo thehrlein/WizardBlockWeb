@@ -1,0 +1,14 @@
+@CHARSET "ISO-8859-1";
+
+td, tr, th {
+	border: 1px solid #cccccc;
+}
+
+th {
+	text-align: center;
+}
+
+.table>tbody>tr>td,
+.table>thead>tr>th {
+	padding: 1px;
+}

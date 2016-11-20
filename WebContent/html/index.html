@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+
+<title>Wizard Block</title>
+<link rel="icon" href="../img/wizard.png">
+<link rel="stylesheet" href="../css/index.css">
+<link rel="stylesheet" href="../css/gameblock.css">
+
+
+</head>
+<body>
+
+ <div class="naviClass">
+ 
+ 	<nav class="navbar navbar-inverse">
+ 		
+ 		<!-- TODO: Navigationsleiste -->
+ 		
+ 	</nav>
+ 
+ </div>	
+
+
+ <div id="contentSettings" class="center">
+  <h2>Willkommen beim Wizard Block</h2>
+  <br>
+  <p>Wie viele Spieler?</p>
+ 
+  <input type="number" id="players" min="3" max="6" placeholder="Spieler" required>
+  <p id="wrongNumber">Sie müssen eine Spieleranzahl zwischen 3 und 6 angeben.</p>
+
+  <br><br>
+  <p>Dürfen die Stiche aufgehen?</p>
+	  
+  <!-- Rounded switch -->
+  <label class="switch">
+    <input id="switchStitches" type="checkbox">
+    <div class="slider round"></div>
+  </label>
+  
+  <p id="pSwitchStitches"></p>
+  
+  <div class="playerName" id="playerOne">
+  	<input data-bind="value: playerNameOne" type="text" placeholder="Spieler 1" required> 
+  	<p id="warningPlayerOne" class="alert alert-warning">Bitte gebe dem Spieler einen Namen</p>
+  </div>
+   <div class="playerName" id="playerTwo">
+  	<input type="text" placeholder="Spieler 2" required>
+  	<p id="warningPlayerTwo" class="alert alert-warning">Bitte gebe dem Spieler einen Namen</p>
+   </div>
+   <div class="playerName" id="playerThree">
+  	<input type="text" placeholder="Spieler 3" required>
+  	<p id="warningPlayerThree" class="alert alert-warning">Bitte gebe dem Spieler einen Namen</p>
+  </div>
+  <div class="playerName" id="playerFour">
+  	<input type="text" placeholder="Spieler 4">
+  	<p id="warningPlayerFour" class="alert alert-warning">Bitte gebe dem Spieler einen Namen</p>
+  </div>
+  <div class="playerName" id="playerFive">
+  	<input type="text" placeholder="Spieler 5">
+  	<p id="warningPlayerFive" class="alert alert-warning">Bitte gebe dem Spieler einen Namen</p>
+  </div>
+  <div class="playerName" id="playerSix">
+  	<input type="text" placeholder="Spieler 6">
+  	<p id="warningPlayerSix" class="alert alert-warning">Bitte gebe dem Spieler einen Namen</p>
+  </div>
+  
+  <div>
+    <button id="startGame">Spiel starten</button>
+  </div>
+
+ </div>
+ 
+ <!-- Gameblock -->
+  <div id="contentGameblock" class="center">
+  
+  <table class="table">
+    <thead>
+     <tr>
+      <th>Runde</th>
+      <th data-bind="text: playerNameOne" colspan="2">todo</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td>30</td>
+      <td>30</td>
+      <td>20</td>
+      <td>20</td>
+      <td>-20</td>
+      <td>-20</td>
+      <td>20</td>
+      <td>20</td>
+      <td>-20</td>
+      <td>-20</td>
+      <td>20</td>
+      <td>20</td>
+     </tr>
+    </tbody>
+  </table>
+ 
+ </div>
+</body>
+  <script src="../js/jquery-3.1.1.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/knockoutjs.js"></script>
+  
+  <script src="../js/index.js"></script>
+  <script src="../js/gameblock.js"></script>
+  
+</html>
+
+
