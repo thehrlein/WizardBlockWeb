@@ -15,11 +15,17 @@
 </head>
 <body>
 
+<div class="wrapper">
+
  <div class="naviClass">
  
  	<nav class="navbar navbar-inverse">
  		
  		<!-- TODO: Navigationsleiste -->
+		<ul class="nav nav-justified" id="myNav">
+		  <li><a class="btn btn-secondary" href="javascript:history.go(0)"><img id="wizardIcon" alt="Wizard Block" src="../img/wizard.png"> Spiel neustarten</a></li>
+		  <li><a class="btn btn-secondary" id="changePlayerNames" onclick="toggleNavBarButton()">Spielernamen ändern</a></li>
+		</ul>
  		
  	</nav>
  
@@ -28,6 +34,10 @@
 
  <div id="contentSettings" class="center">
   <h2>Willkommen beim Wizard Block</h2>
+  <br>
+  <p>Wichtig: Aktualisiere diese Seite nicht während des Spiels, da sonst alle Spielstände gelöscht werden.</p>
+  <p>Möchtest du allerdings neustarten, aktualisiere (F5) einfach und fang von vorne an :-)</p>
+  <br>
   <br>
   <p>Wie viele Spieler?</p>
  
@@ -46,32 +56,32 @@
   <p id="pSwitchStitches"></p>
   
   <div class="playerName" id="playerOne">
-  	<input data-bind="value: playerNameOne" type="text" placeholder="Spieler 1" required> 
+  	<input id="playerNameInputOne" type="text" placeholder="Spieler 1" required> 
   	<p id="warningPlayerOne" class="alert alert-warning">Bitte gebe dem Spieler einen Namen</p>
   </div>
    <div class="playerName" id="playerTwo">
-  	<input type="text" placeholder="Spieler 2" required>
+  	<input id="playerNameInputTwo" type="text" placeholder="Spieler 2" required>
   	<p id="warningPlayerTwo" class="alert alert-warning">Bitte gebe dem Spieler einen Namen</p>
    </div>
    <div class="playerName" id="playerThree">
-  	<input type="text" placeholder="Spieler 3" required>
+  	<input id="playerNameInputThree" type="text" placeholder="Spieler 3" required>
   	<p id="warningPlayerThree" class="alert alert-warning">Bitte gebe dem Spieler einen Namen</p>
   </div>
   <div class="playerName" id="playerFour">
-  	<input type="text" placeholder="Spieler 4">
+  	<input id="playerNameInputFour" type="text" placeholder="Spieler 4">
   	<p id="warningPlayerFour" class="alert alert-warning">Bitte gebe dem Spieler einen Namen</p>
   </div>
   <div class="playerName" id="playerFive">
-  	<input type="text" placeholder="Spieler 5">
+  	<input id="playerNameInputFive" type="text" placeholder="Spieler 5">
   	<p id="warningPlayerFive" class="alert alert-warning">Bitte gebe dem Spieler einen Namen</p>
   </div>
   <div class="playerName" id="playerSix">
-  	<input type="text" placeholder="Spieler 6">
+  	<input id="playerNameInputSix" type="text" placeholder="Spieler 6">
   	<p id="warningPlayerSix" class="alert alert-warning">Bitte gebe dem Spieler einen Namen</p>
   </div>
   
   <div>
-    <button id="startGame">Spiel starten</button>
+    <button class="btn btn-primary" id="startGame">Spiel starten</button>
   </div>
 
  </div>
@@ -79,48 +89,77 @@
  <!-- Gameblock -->
   <div id="contentGameblock" class="center">
   
-  <table class="table">
+  <table class="table table-striped">
     <thead>
      <tr>
-      <th>Runde</th>
-      <th data-bind="text: playerNameOne" colspan="2">todo</th>
+      <th class="big">Runde</th>
+      <th class="big" id="playerNameOne" colspan="2">Spieler 1</th>
+      <th class="big" id="playerNameTwo" colspan="2">Spieler 2</th>
+      <th class="big" id="playerNameThree" colspan="2">Spieler 3</th>
+      <th class="big" id="playerNameFour" colspan="2">Spieler 4</th>
+      <th class="big" id="playerNameFive" colspan="2">Spieler 5</th>
+      <th class="big" id="playerNameSix" colspan="2">Spieler 6</th>
      </tr>
     </thead>
-    <tbody>
+    <tbody data-bind="foreach: rounds">
+    <!-- Tipps and Stitches -->
      <tr>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td data-bind="text: gameRound" id="round"></td>
+      <td><input type="number" data-bind="value: tippP1"/></td>
+      <td><input type="number" data-bind="value: stitchP1"/></td>
+      <td><input type="number" data-bind="value: tippP2"/></td>
+      <td><input type="number" data-bind="value: stitchP2"/></td>
+      <td><input type="number" data-bind="value: tippP3"/></td>
+      <td><input type="number" data-bind="value: stitchP3"/></td>
+      <td><input class="inputFour" type="number" data-bind="value: tippP4"/></td>
+      <td><input class="inputFour" type="number" data-bind="value: stitchP4"/></td>
+      <td><input class="inputFive" type="number" data-bind="value: tippP5"/></td>
+      <td><input class="inputFive" type="number" data-bind="value: stitchP5"/></td>
+      <td><input class="inputSix" type="number" data-bind="value: tippP6"/></td>
+      <td><input class="inputSix" type="number" data-bind="value: stitchP6"/></td>
      </tr>
+
+	<!-- Scores -->
      <tr>
       <td></td>
-      <td>30</td>
-      <td>30</td>
-      <td>20</td>
-      <td>20</td>
-      <td>-20</td>
-      <td>-20</td>
-      <td>20</td>
-      <td>20</td>
-      <td>-20</td>
-      <td>-20</td>
-      <td>20</td>
-      <td>20</td>
+      <td data-bind="text: addP1, style: { color: addP1() < 0 ? 'red' : 'green'} "></td>
+      <td class="big" data-bind="text: totalP1"></td>
+      <td data-bind="text: addP2, style: { color: addP2() < 0 ? 'red' : 'green'} "></td>
+      <td class="big" data-bind="text: totalP2"></td>
+      <td data-bind="text: addP3, style: { color: addP3() < 0 ? 'red' : 'green'} "></td>
+      <td class="big" data-bind="text: totalP3"></td>
+      <td data-bind="text: addP4, style: { color: addP4() < 0 ? 'red' : 'green'} "></td>
+      <td class="big" data-bind="text: totalP4"></td>
+      <td data-bind="text: addP5, style: { color: addP5() < 0 ? 'red' : 'green'} "></td>
+      <td class="big" data-bind="text: totalP5"></td>
+      <td data-bind="text: addP6, style: { color: addP6() < 0 ? 'red' : 'green'} "></td>
+      <td class="big" data-bind="text: totalP6"></td>
      </tr>
+     
     </tbody>
   </table>
+  
+ 
+  
+  <button class="btn btn-primary" data-bind="click: addRound" id="newRoundButton">Neue Runde hinzufügen</button>
  
  </div>
+ 
+  <div class="footer">
+ 
+ 	<nav class="navbar navbar-inverse">
+ 		
+ 		<!-- TODO: Navigationsleiste -->
+		<ul class="nav">
+		  <li><a class="btn btn-secondary" href="http://www.facebook.de/wizard.block" target="_blank"><img id="fbIcon" alt="Wizard Block auf Facebook" src="../img/facebook.png"></a></li>
+		  <li><a class="btn btn-secondary" href="https://play.google.com/store/apps/details?id=com.tobiashehrlein.tobiswizardblock" target="_blank"><img id="playstoreIcon" alt="Wizard Block App im PlayStore" src="../img/playstore.png"></a></li>
+		</ul>
+ 		
+ 	</nav>
+ 
+ </div>	
+ 
+</div> 
 </body>
   <script src="../js/jquery-3.1.1.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>

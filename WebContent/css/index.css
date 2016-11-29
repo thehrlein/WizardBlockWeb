@@ -1,11 +1,38 @@
 @CHARSET "ISO-8859-1";
 
-* {
-	font-family: Cursive;
+*, p {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+html, body {
+	height: 100%;	
 }
 
 .center {
 	text-align: center;
+	width: 80%;
+	margin: auto;
+}
+
+.navbar-inverse {
+	background-color: black;
+}
+
+.wrapper {
+	min-height: 100%;
+	position: relative;
+}
+
+.footer {
+	width:100%;
+	height:50px;
+	position:absolute;
+	bottom:0;
+	left:0;
+}
+
+.footer > .navbar {
+	margin-bottom: 0px;
 }
 
 #content {
@@ -101,4 +128,75 @@ input:checked + .slider:before {
 
 #startGame {
 	margin-top: 25px;
+	margin-bottom: 50px;
+}
+
+.btn-secondary {
+	height: 50px;
+	width: 50%;
+	background-color: black;
+	color: white;
+	vertical-align: middle;
+	float: left;
+}
+
+#myNav .btn-secondary {
+	width: 100%;
+}
+
+.btn-secondary:hover {
+	background-color: white;
+	color: black;
+}
+
+.footer .nav>li>a {
+	padding: 5px;	
+}
+
+.nav>li>a:focus, 
+.nav>li>a:hover {
+    text-decoration: none;
+    background-color: #000;
+    color: #fff;
+}
+
+#fbIcon {
+	height: 40px;
+	width: 40px;
+	float: right;
+	margin-right: 140px;
+}
+
+#playstoreIcon {
+	height: 40px;
+	width: 120px;
+	float: left;
+	margin-left: 100px;
+}
+
+#wizardIcon {
+	width: 25px;
+	height: 25px;
+}
+
+
+@media (max-width: 1200px) {
+	#fbIcon {
+		margin-right: 90px;
+	}
+	#playstoreIcon {
+		margin-left: 50px;
+	}
+}
+
+@media (max-width: 767px) {
+	#fbIcon {
+		margin-right: 65px;
+	}
+	#playstoreIcon {
+		margin-left: 25px;
+	}
+	#myNav .btn-secondary {
+		width: 50%;
+	}
 }

@@ -5,6 +5,8 @@
        hidePlayerInputs();
 	   hidePlayerInputWarnings();
 	   isSwitchStitchesChecked();
+	   hideChangePlayerNamesNavBar();
+	   hideGameBlock();
 	   
 	   $('#players').keyup(function(){
 		   console.log("keyup jquery");
@@ -40,14 +42,15 @@
 		   
 		   showIsEveryNameEnteredArray();
 		   openGameBlock();
-		   
 	   });
 	   
+
 	   
    });
    
+
+   
    // variablen
-   var players = 0;
    var playerNameOne;
    var playerNameTwo;
    var playerNameThree;
@@ -57,13 +60,20 @@
    var playerNameArray = [];
    var isEveryNameEnteredArray = [true, true, true, true, true, true];
    var isEveryNameEntered = false;
-
-
-   
+   var editSettings = false;
+  
    
 
    
    // methoden
+   function hideChangePlayerNamesNavBar() {
+	   $('#changePlayerNames').hide();
+   }
+   
+   function showChangePlayerNamesNavBar() {
+	   $('#changePlayerNames').show();
+   }
+   
     function hidePlayerInputs() {
     	$('#playerSix').hide();
     	$('#playerFive').hide();
@@ -73,11 +83,42 @@
     	$('#playerOne').hide();
     };
     
+    function toggleNavBarButton() {
+    	if (editSettings) {
+    		openGameBlock();
+    	} else {
+        	showContentSettings();
+    	}
+    }
+    
     function openGameBlock() {
     	console.log(isEveryNameEntered);
     	if (isEveryNameEntered) {
-    		$('#contentSettings').hide();
+    		editSettings = false;
+    		hideContentSettings();
+    		showChangePlayerNamesNavBar();
+    		$('#changePlayerNames').text("Spielernamen ändern");
+    		hideUnusedPlayerInputs();
     	}
+    }
+    
+
+    
+    function hideContentSettings() {
+		$('#contentSettings').hide();
+		$('#contentGameblock').show();
+    }
+    
+    function showContentSettings() {
+		$('#startGame').text("Spiel fortsetzen");
+		$('#changePlayerNames').text("Spiel fortsetzen");
+		$('#contentSettings').show();
+		hideGameBlock();
+		editSettings = true;
+    }
+    
+    function hideGameBlock() {
+		$('#contentGameblock').hide();
     }
     
     function showIsEveryNameEnteredArray() {
