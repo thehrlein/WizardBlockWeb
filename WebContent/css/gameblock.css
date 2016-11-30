@@ -34,7 +34,7 @@ td > input {
 	vertical-align: middle;
 }
 
-#contentGameblock, #contentSettings {
+#gameblock, #settings {
 	margin-top: 50px;
 	padding-bottom: 50px;
 }
@@ -44,7 +44,7 @@ td > input {
 }
 
 @media (min-width: 767px) {
-	#contentGameblock {
+	#gameblock {
 		padding-left: 0px;
 		padding-right: 0px;
 	}

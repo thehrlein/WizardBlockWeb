@@ -1,24 +1,29 @@
    $(window).on('load', function(){
 	   console.log("index js geladen!");
+	   
+	   // hide unused stuff at the beginning
        $('#wrongNumber').hide();
        $('#startGame').hide();
        hidePlayerInputs();
 	   hidePlayerInputWarnings();
-	   isSwitchStitchesChecked();
+	//   isSwitchStitchesChecked();
 	   hideChangePlayerNamesNavBar();
 	   hideGameBlock();
 	   
+	   // after number entered in player number input field
 	   $('#players').keyup(function(){
-		   console.log("keyup jquery");
 		   howMuchPlayers();
+		   checkNumber();
 	   });
 	   
-	   $('#switchStitches').click(function(){
+	 /*  $('#switchStitches').click(function(){
 		   isSwitchStitchesChecked();
-	   });
+	   }); */
 	   
+	   // player number input field arrow up down pressed
 	   $('#players').on('change', function(){
 		   howMuchPlayers();
+		   checkNumber();
 	   });
 	   
 	   $('#startGame').on('click', function(){
@@ -44,6 +49,8 @@
 		   openGameBlock();
 	   });
 	   
+	   // click on navigation button for changing player names / resume game
+	   $('#changePlayerNames').click(toggleNavBarButton);
 
 	   
    });
@@ -87,43 +94,44 @@
     	if (editSettings) {
     		openGameBlock();
     	} else {
-        	showContentSettings();
+        	showSettings();
     	}
     }
     
     function openGameBlock() {
-    	console.log(isEveryNameEntered);
     	if (isEveryNameEntered) {
     		editSettings = false;
-    		hideContentSettings();
+    		hideSettings();
     		showChangePlayerNamesNavBar();
     		$('#changePlayerNames').text("Spielernamen ändern");
-    		hideUnusedPlayerInputs();
     	}
     }
     
 
     
-    function hideContentSettings() {
-		$('#contentSettings').hide();
-		$('#contentGameblock').show();
+    function hideSettings() {
+		$('#settings').hide();
+		showGameBlock();
     }
     
-    function showContentSettings() {
+    function showGameBlock() {
+		$('#gameblock').show();
+    }
+    
+    function showSettings() {
 		$('#startGame').text("Spiel fortsetzen");
 		$('#changePlayerNames').text("Spiel fortsetzen");
-		$('#contentSettings').show();
+		$('#settings').show();
 		hideGameBlock();
 		editSettings = true;
     }
     
     function hideGameBlock() {
-		$('#contentGameblock').hide();
+		$('#gameblock').hide();
     }
     
     function showIsEveryNameEnteredArray() {
     	for (var s in isEveryNameEnteredArray) {
-			console.log(isEveryNameEnteredArray[s]);
 			if (isEveryNameEnteredArray[s] == false) {
 				isEveryNameEntered = false;
 				break;
@@ -135,7 +143,6 @@
     
     function checkPlayerSixInput() {
     	playerNameSix = $('#playerSix input').val();
-		console.log(playerNameSix);
 		if (playerNameSix.length > 0) {
 			playerNameArray.push(playerNameSix);
 	    	$('#warningPlayerSix').hide();
@@ -148,7 +155,6 @@
     
     function checkPlayerFiveInput() {
     	playerNameFive = $('#playerFive input').val();
-		console.log(playerNameFive);
 		if (playerNameFive.length > 0) {
 			playerNameArray.push(playerNameFive);
 	    	$('#warningPlayerFive').hide();
@@ -161,7 +167,6 @@
     
     function checkPlayerFourInput() {
     	playerNameFour = $('#playerFour input').val();
-		console.log(playerNameFour);
 		if (playerNameFour.length > 0) {
 			playerNameArray.push(playerNameFour);
 	    	$('#warningPlayerFour').hide();
@@ -174,7 +179,6 @@
     
     function checkPlayerThreeInput() {
     	playerNameThree = $('#playerThree input').val();
-		console.log(playerNameThree);
 		if (playerNameThree.length > 0) {
 			playerNameArray.push(playerNameThree);
 	    	$('#warningPlayerThree').hide();
@@ -187,7 +191,6 @@
     
     function checkPlayerTwoInput() {
     	playerNameTwo = $('#playerTwo input').val();
-		console.log(playerNameTwo);
 		if (playerNameTwo.length > 0) {
 			playerNameArray.push(playerNameTwo);
 	    	$('#warningPlayerTwo').hide();
@@ -200,7 +203,6 @@
     
     function checkPlayerOneInput() {
     	playerNameOne = $('#playerOne input').val();
-		console.log(playerNameOne);
 		if (playerNameOne.length > 0) {
 			playerNameArray.push(playerNameOne);
 	    	$('#warningPlayerOne').hide();
@@ -219,11 +221,9 @@
     	$('#warningPlayerFour').hide();
     	$('#warningPlayerFive').hide();
     	$('#warningPlayerSix').hide();
-
-
     }
     
-    function isSwitchStitchesChecked() {
+  /*  function isSwitchStitchesChecked() {
        if($("#switchStitches").is(':checked')) {
     	   console.log("--> switch stitches IS checked");
      	    $("#pSwitchStitches").text("Ja. Die Anzahl der Tipps darf gleich " +
@@ -234,20 +234,19 @@
 		    	"gleich der möglichen Anzahl Stiche sein, muss der letzte " +
 			  	"Spieler 1 Stich mehr oder weniger tippen.");  // unchecked	
 		   }
-	   };
+	   }; */
    
     
+    // check player number input value
    	function howMuchPlayers() {
    		players = $('#players').val();
-   		console.log("players: " + players);
-   		checkNumber();
+   		
    	};
    	   	
    	function showPlayerNameInputs() {
    		
- 	   hidePlayerInputWarnings();
+ 	    hidePlayerInputWarnings();
 
-   		console.log("show player name inputs, depending on players (" + players +")");
    		switch (players) {
    		case "3":
    	    	$('#playerThree').show();
@@ -286,9 +285,7 @@
    	};
 
    	function checkNumber() {
-   		console.log("onkeydown");
    		if ($('#players').val() > 2 && $('#players').val() < 7) {
-   			console.log(players + " is valid");
    			$('#wrongNumber').hide();
    	   		showPlayerNameInputs();
    	   		$('#startGame').show();

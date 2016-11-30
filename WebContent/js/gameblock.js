@@ -23,10 +23,15 @@
 	$("#playerNameInputOne, #playerNameInputTwo, #playerNameInputThree, #playerNameInputFour, " +
 		"#playerNameInputFive, #playerNameInputSix").bind("change keyup", function(){ 
 	    updateNames();
+	    
+    $('#startGame').click(hideUnusedPlayerInputs);
+    
+    $('#newRoundButton').click(hideUnusedPlayerInputs);
+
+
 	});
 	
 	
-	// from index.js when click on start game
     function hideUnusedPlayerInputs() {
     	console.log("hideunsedplayer: " + players);
     	
@@ -37,7 +42,19 @@
     		$('.inputSix').hide();
     		break;
     	case "4":
+    		$('.inputFour').show();
+    		$('.inputFive').hide();
+    		$('.inputSix').hide();
     		break;
+    	case "5":
+    		$('.inputFour').show();
+    		$('.inputFive').show();
+    		$('.inputSix').hide();
+    		break;
+    	case "6":
+    		$('.inputFour').show();
+    		$('.inputFive').show();
+    		$('.inputSix').show();
     	}
     };
 	
@@ -73,14 +90,11 @@
 		self.addP1 = ko.computed(function() {
 			var addScore;
 			if (typeof self.tippP1() == 'undefined' || typeof self.stitchP1() == 'undefined') {
-				console.log("tipp1 or stitch1 is not definied");
 			} else {
 				if (self.tippP1() == self.stitchP1()) {
 					addScore = 20 + self.tippP1() * 10;
-					console.log(addScore);
 				} else {
 					addScore = 0 - (Math.abs((self.tippP1() - self.stitchP1())) * 10);
-					console.log(addScore);
 				}
 			}
 			return addScore;
@@ -89,14 +103,11 @@
 		self.addP2 = ko.computed(function() {
 			var addScore;
 			if (typeof self.tippP2() == 'undefined' || typeof self.stitchP2() == 'undefined') {
-				console.log("tipp2 or stitch2 is not definied");
 			} else {
 				if (self.tippP2() == self.stitchP2()) {
 					addScore = 20 + self.tippP2() * 10;
-					console.log(addScore);
 				} else {
 					addScore = 0 - (Math.abs((self.tippP2() - self.stitchP2())) * 10);
-					console.log(addScore);
 				}
 			}
 			return addScore;
@@ -105,14 +116,11 @@
 		self.addP3 = ko.computed(function() {
 			var addScore;
 			if (typeof self.tippP3() == 'undefined' || typeof self.stitchP3() == 'undefined') {
-				console.log("tipp3 or stitch3 is not definied");
 			} else {
 				if (self.tippP3() == self.stitchP3()) {
 					addScore = 20 + self.tippP3() * 10;
-					console.log(addScore);
 				} else {
 					addScore = 0 - (Math.abs((self.tippP3() - self.stitchP3())) * 10);
-					console.log(addScore);
 				}
 			}
 			return addScore;
@@ -121,14 +129,11 @@
 		self.addP4 = ko.computed(function() {
 			var addScore;
 			if (typeof self.tippP4() == 'undefined' || typeof self.stitchP4() == 'undefined') {
-				console.log("tipp4 or stitch4 is not definied");
 			} else {
 				if (self.tippP4() == self.stitchP4()) {
 					addScore = 20 + self.tippP4() * 10;
-					console.log(addScore);
 				} else {
 					addScore = 0 - (Math.abs((self.tippP4() - self.stitchP4())) * 10);
-					console.log(addScore);
 				}
 			}
 			return addScore;
@@ -137,14 +142,11 @@
 		self.addP5 = ko.computed(function() {
 			var addScore;
 			if (typeof self.tippP5() == 'undefined' || typeof self.stitchP5() == 'undefined') {
-				console.log("tipp5 or stitch5 is not definied");
 			} else {
 				if (self.tippP5() == self.stitchP5()) {
 					addScore = 20 + self.tippP5() * 10;
-					console.log(addScore);
 				} else {
 					addScore = 0 - (Math.abs((self.tippP5() - self.stitchP5())) * 10);
-					console.log(addScore);
 				}
 			}
 			return addScore;
@@ -153,14 +155,11 @@
 		self.addP6 = ko.computed(function() {
 			var addScore;
 			if (typeof self.tippP6() == 'undefined' || typeof self.stitchP6() == 'undefined') {
-				console.log("tipp6 or stitch6 is not definied");
 			} else {
 				if (self.tippP6() == self.stitchP6()) {
 					addScore = 20 + self.tippP6() * 10;
-					console.log(addScore);
 				} else {
 					addScore = 0 - (Math.abs((self.tippP6() - self.stitchP6())) * 10);
-					console.log(addScore);
 				}
 			}
 			return addScore;
@@ -169,11 +168,8 @@
 		
 		self.totalP1 = ko.computed(function() {
 			if (typeof self.addP1() == 'undefined') {
-				console.log("addP1() is undefined");
 			} else {
-				console.log("addP1(): " + self.addP1());
 				totalPlayerOne = totalPlayerOne + self.addP1();
-				console.log("totalplayerone: " + totalPlayerOne + " - tipp: " + self.addP1());
 				return totalPlayerOne;
 			}
 			return "";
@@ -181,11 +177,8 @@
 		
 		self.totalP2 = ko.computed(function() {
 			if (typeof self.addP2() == 'undefined') {
-				console.log("addP2() is undefined");
 			} else {
-				console.log("addP2(): " + self.addP2());
 				totalPlayerTwo = totalPlayerTwo + self.addP2();
-				console.log("totalplayerTwo: " + totalPlayerTwo + " - tipp: " + self.addP2());
 				return totalPlayerTwo;
 			}
 			return "";
@@ -193,11 +186,8 @@
 		
 		self.totalP3 = ko.computed(function() {
 			if (typeof self.addP3() == 'undefined') {
-				console.log("addP3() is undefined");
 			} else {
-				console.log("addP3(): " + self.addP3());
 				totalPlayerThree = totalPlayerThree + self.addP3();
-				console.log("totalplayerThree: " + totalPlayerThree + " - tipp: " + self.addP3());
 				return totalPlayerThree;
 			}
 			return "";
@@ -205,11 +195,8 @@
 		
 		self.totalP4 = ko.computed(function() {
 			if (typeof self.addP4() == 'undefined') {
-				console.log("addP4() is undefined");
 			} else {
-				console.log("addP4(): " + self.addP4());
 				totalPlayerFour = totalPlayerFour + self.addP4();
-				console.log("totalplayerFour: " + totalPlayerFour + " - tipp: " + self.addP4());
 				return totalPlayerFour;
 			}
 			return "";
@@ -217,11 +204,8 @@
 		
 		self.totalP5 = ko.computed(function() {
 			if (typeof self.addP5() == 'undefined') {
-				console.log("addP5() is undefined");
 			} else {
-				console.log("addP5(): " + self.addP5());
 				totalPlayerFive = totalPlayerFive + self.addP5();
-				console.log("totalplayerFive: " + totalPlayerFive + " - tipp: " + self.addP5());
 				return totalPlayerFive;
 			}
 			return "";
@@ -229,11 +213,8 @@
 		
 		self.totalP6 = ko.computed(function() {
 			if (typeof self.addP6() == 'undefined') {
-				console.log("addP6() is undefined");
 			} else {
-				console.log("addP6(): " + self.addP6());
 				totalPlayerSix = totalPlayerSix + self.addP6();
-				console.log("totalplayerSix: " + totalPlayerSix + " - tipp: " + self.addP6());
 				return totalPlayerSix;
 			}
 			return "";

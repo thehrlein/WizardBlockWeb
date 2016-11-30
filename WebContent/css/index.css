@@ -131,16 +131,39 @@ input:checked + .slider:before {
 	margin-bottom: 50px;
 }
 
-.btn-secondary {
+.btn-googleplay, .btn-facebook {
 	height: 50px;
-	width: 50%;
 	background-color: black;
 	color: white;
 	vertical-align: middle;
 	float: left;
 }
 
-#myNav .btn-secondary {
+.btn-facebook {
+	float: right;
+	margin-right: 100px;
+}
+
+.btn-googleplay {
+	margin-left: 60px;
+}
+
+#facebooktext, #googleplaytext {
+	height: 50px;
+	line-height: 40px;
+	margin-right: 5px;
+}
+
+#googleplaytext {
+	margin-left: 5px;
+}
+
+.btn-secondary {
+	height: 50px;
+	background-color: black;
+	color: white;
+	vertical-align: middle;
+	float: left;
 	width: 100%;
 }
 
@@ -164,14 +187,12 @@ input:checked + .slider:before {
 	height: 40px;
 	width: 40px;
 	float: right;
-	margin-right: 140px;
 }
 
 #playstoreIcon {
 	height: 40px;
 	width: 120px;
 	float: left;
-	margin-left: 100px;
 }
 
 #wizardIcon {
@@ -181,22 +202,36 @@ input:checked + .slider:before {
 
 
 @media (max-width: 1200px) {
-	#fbIcon {
-		margin-right: 90px;
+	.btn-facebook {
+		margin-right: 50px;
 	}
-	#playstoreIcon {
-		margin-left: 50px;
+	.btn-googleplay {
+		margin-left: 10px;
+	}
+}
+
+@media (max-width: 1050px) {
+	#facebooktext, #googleplaytext {
+		display: none;
 	}
 }
 
 @media (max-width: 767px) {
-	#fbIcon {
-		margin-right: 65px;
-	}
-	#playstoreIcon {
-		margin-left: 25px;
-	}
-	#myNav .btn-secondary {
+	.btn-secondary {
 		width: 50%;
+	}
+	.center {
+		width: 95%;
+	}
+}
+
+@media (max-width: 500px) {
+	.btn-facebook {
+		float: none;
+		margin-right: 40px;
+	}
+	.btn-googleplay {
+		float: none;
+		margin-left: 0px;
 	}
 }
