@@ -28,6 +28,15 @@ td > input {
 	font-weight: bold;
 }
 
+#gameBlockWarning {
+	display: none;
+}
+
+.table {
+	table-layout: fixed;
+	width: 100%;
+}
+
 .table>tbody>tr>td,
 .table>thead>tr>th {
 	padding: 0px;

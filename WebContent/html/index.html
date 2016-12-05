@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,41 +19,48 @@
 
  <div class="naviClass">
  
- 	<nav class="navbar navbar-inverse">
- 		
- 		<!-- TODO: Navigationsleiste -->
-		<ul class="nav nav-justified" id="myNav">
-		  <li><a class="btn btn-secondary" href="javascript:history.go(0)"><img id="wizardIcon" alt="Wizard Block" src="../img/wizard.png"> Wizard Block</a></li>
-		  <li><a class="btn btn-secondary" id="changePlayerNames">Spielernamen ändern</a></li>
-		</ul>
- 		
- 	</nav>
+ 	<!-- Navigation -->
+	<nav class="navbar navbar-inverse" role="navigation">
+	      <ul class="nav nav-justified" id="myNav">
+	           
+	        <li></li>
+	        <li><a class="btn btn-secondary" href="javascript:history.go(0)"><img id="wizardIcon" alt="Icon" src="../img/wizard.png"> <span>Wizard Block</span></a></li>
+		    <li><a class="btn btn-secondary" id="changePlayerNames"><span>Spielernamen ändern</span></a></li>
+	        <li></li>
+	                   
+	      </ul>
+	</nav>
  
  </div>	
 
 
  <div id="settings" class="center">
-  <h2>Willkommen beim Wizard Block</h2>
+  <h1>Willkommen beim Wizard Block</h1>
   <br>
   <p>Wichtig: Aktualisiere diese Seite nicht während des Spiels, da sonst alle Spielstände gelöscht werden.</p>
-  <p>Möchtest du allerdings neustarten, aktualisiere (F5) einfach und fang von vorne an :-)</p>
+  <p>Möchtest du allerdings neustarten, aktualisiere einfach und fang von vorne an :-)</p>
   <br>
   <br>
-  <p>Wie viele Spieler?</p>
- 
-  <input type="number" id="players" min="3" max="6" placeholder="Spieler" required>
-  <p id="wrongNumber">Sie müssen eine Spieleranzahl zwischen 3 und 6 angeben.</p>
-
-  <br><br>
-  <p>Dürfen die Stiche aufgehen?</p>
+  <div id="hiddenSettings">
+	  <p>Wie viele Spieler?</p>
+	 
+	  <input type="number" id="players" min="3" max="6" placeholder="Spieler" required>
+	  <p id="wrongNumber">Sie müssen eine Spieleranzahl zwischen 3 und 6 angeben.</p>
+	
+	  <br><br>
+	<!--  <p>Dürfen die Stiche aufgehen?</p>
+		  
+	 
+	  <label class="switch">
+	    <input id="switchStitches" type="checkbox">
+	    <div class="slider round"></div>
+	  </label>
 	  
-  <!-- Rounded switch -->
-  <label class="switch">
-    <input id="switchStitches" type="checkbox">
-    <div class="slider round"></div>
-  </label>
+	  <p id="pSwitchStitches"></p> -->
   
-  <p id="pSwitchStitches"></p>
+  </div>
+  
+  <p id="yourNames">Wie lauten eure Namen?</p>
   
   <div class="playerName" id="playerOne">
   	<input id="playerNameInputOne" type="text" placeholder="Spieler 1" required> 
@@ -90,32 +97,33 @@
   <div id="gameblock" class="center">
   
   <table class="table table-striped">
+  <caption>Dein Wizard Block</caption>
     <thead>
      <tr>
-      <th class="big">Runde</th>
-      <th class="big" id="playerNameOne" colspan="2">Spieler 1</th>
-      <th class="big" id="playerNameTwo" colspan="2">Spieler 2</th>
-      <th class="big" id="playerNameThree" colspan="2">Spieler 3</th>
-      <th class="big inputFour" id="playerNameFour" colspan="2">Spieler 4</th>
-      <th class="big inputFive" id="playerNameFive" colspan="2">Spieler 5</th>
-      <th class="big inputSix" id="playerNameSix" colspan="2">Spieler 6</th>
+      <th scope="col" class="big">Runde</th>
+      <th scope="col" class="big" id="playerNameOne" colspan="2">Spieler 1</th>
+      <th scope="col" class="big" id="playerNameTwo" colspan="2">Spieler 2</th>
+      <th scope="col" class="big" id="playerNameThree" colspan="2">Spieler 3</th>
+      <th scope="col" class="big inputFour" id="playerNameFour" colspan="2">Spieler 4</th>
+      <th scope="col" class="big inputFive" id="playerNameFive" colspan="2">Spieler 5</th>
+      <th scope="col" class="big inputSix" id="playerNameSix" colspan="2">Spieler 6</th>
      </tr>
     </thead>
     <tbody data-bind="foreach: rounds">
     <!-- Tipps and Stitches -->
      <tr>
       <td data-bind="text: gameRound" id="round"></td>
-      <td><input type="number" data-bind="value: tippP1"/></td>
-      <td><input type="number" data-bind="value: stitchP1"/></td>
-      <td><input type="number" data-bind="value: tippP2"/></td>
-      <td><input type="number" data-bind="value: stitchP2"/></td>
-      <td><input type="number" data-bind="value: tippP3"/></td>
-      <td><input type="number" data-bind="value: stitchP3"/></td>
-      <td class="inputFour"><input type="number" data-bind="value: tippP4"/></td>
-      <td class="inputFour"><input type="number" data-bind="value: stitchP4"/></td>
-      <td class="inputFive"><input type="number" data-bind="value: tippP5"/></td>
-      <td class="inputFive"><input type="number" data-bind="value: stitchP5"/></td>
-      <td class="inputSix"><input type="number" data-bind="value: tippP6"/></td>
+      <td><input class="tipp" type="number" data-bind="value: tippP1"/></td>
+      <td><input class="tipp" type="number" data-bind="value: stitchP1"/></td>
+      <td><input class="tipp" type="number" data-bind="value: tippP2"/></td>
+      <td><input class="tipp" type="number" data-bind="value: stitchP2"/></td>
+      <td><input class="tipp" type="number" data-bind="value: tippP3"/></td>
+      <td><input class="tipp" type="number" data-bind="value: stitchP3"/></td>
+      <td class="inputFour tipp"><input type="number" data-bind="value: tippP4"/></td>
+      <td class="inputFour tipp"><input type="number" data-bind="value: stitchP4"/></td>
+      <td class="inputFive tipp"><input type="number" data-bind="value: tippP5"/></td>
+      <td class="inputFive tipp"><input type="number" data-bind="value: stitchP5"/></td>
+      <td class="inputSix tipp"><input type="number" data-bind="value: tippP6"/></td>
       <td class="inputSix"><input type="number" data-bind="value: stitchP6"/></td>
      </tr>
 
@@ -139,7 +147,7 @@
     </tbody>
   </table>
   
- 
+  <p id="gameBlockWarning" class="alert alert-warning"></p>
   
   <button class="btn btn-primary" data-bind="click: addRound" id="newRoundButton">Neue Runde hinzufügen</button>
  
@@ -147,19 +155,19 @@
  
   <div class="footer">
  
- 	<nav class="navbar navbar-inverse">
+ 	<nav class="navbar navbar-inverse" role="navigation">
  		
  		<!-- TODO: Navigationsleiste -->
 		<ul class="nav">
 		  <li class="col-xs-offset-2 col-xs-4">
 		    <a class="btn btn-facebook" href="http://www.facebook.de/wizard.block" target="_blank">
 		      <span id="facebooktext">Der Wizard Block auf Facebook</span>
-		      <img id="fbIcon" alt="Wizard Block auf Facebook" src="../img/facebook.png">
+		      <img id="fbIcon" alt="Facebook Seite" src="../img/facebook.png">
 		    </a>
 		  </li>
 		  <li class="col-xs-4">
 		    <a class="btn btn-googleplay" href="https://play.google.com/store/apps/details?id=com.tobiashehrlein.tobiswizardblock" target="_blank">
-		      <img id="playstoreIcon" alt="Wizard Block App im PlayStore" src="../img/playstore.png">
+		      <img id="playstoreIcon" alt="Android App" src="../img/playstore.png">
 		      <span id="googleplaytext">Der Wizard Block als Android App</span>
 		    </a>
 		  </li>

@@ -1,14 +1,9 @@
    $(window).on('load', function(){
 	   console.log("index js geladen!");
 	   
-	   // hide unused stuff at the beginning
-       $('#wrongNumber').hide();
-       $('#startGame').hide();
-       hidePlayerInputs();
-	   hidePlayerInputWarnings();
-	//   isSwitchStitchesChecked();
-	   hideChangePlayerNamesNavBar();
-	   hideGameBlock();
+
+	 //  isSwitchStitchesChecked();
+
 	   
 	   // after number entered in player number input field
 	   $('#players').keyup(function(){
@@ -16,7 +11,7 @@
 		   checkNumber();
 	   });
 	   
-	 /*  $('#switchStitches').click(function(){
+	/*   $('#switchStitches').click(function(){
 		   isSwitchStitchesChecked();
 	   }); */
 	   
@@ -68,6 +63,7 @@
    var isEveryNameEnteredArray = [true, true, true, true, true, true];
    var isEveryNameEntered = false;
    var editSettings = false;
+   var canTippsBeEqualStitches = false;
   
    
 
@@ -91,11 +87,16 @@
     };
     
     function toggleNavBarButton() {
+    	hideOtherSettings();
     	if (editSettings) {
     		openGameBlock();
     	} else {
         	showSettings();
     	}
+    }
+    
+    function hideOtherSettings() {
+    	$('#hiddenSettings').hide();
     }
     
     function openGameBlock() {
@@ -228,11 +229,13 @@
     	   console.log("--> switch stitches IS checked");
      	    $("#pSwitchStitches").text("Ja. Die Anzahl der Tipps darf gleich " +
      	    	"der Anzahl möglicher Stiche sein.");  // checked
+     	   canTippsBeEqualStitches = true;
        } else {
     	   console.log("--> switch stitches IS NOT checked");
 		    $("#pSwitchStitches").text("Nein. Sollte die Anzahl der Tipps " +
 		    	"gleich der möglichen Anzahl Stiche sein, muss der letzte " +
 			  	"Spieler 1 Stich mehr oder weniger tippen.");  // unchecked	
+	     	   canTippsBeEqualStitches = false;
 		   }
 	   }; */
    
@@ -289,6 +292,7 @@
    			$('#wrongNumber').hide();
    	   		showPlayerNameInputs();
    	   		$('#startGame').show();
+   	   		$('#yourNames').show();  	   	
    		}
    		else {
    			console.log(players + " is not a valid player number");
