@@ -1,9 +1,15 @@
+
+  
    $(window).on('load', function(){
 	   console.log("index js geladen!");
 	   
 
 	 //  isSwitchStitchesChecked();
 
+
+	$('#navImpressum').click(function(){
+		toogleImpressum();
+	});
 	   
 	   // after number entered in player number input field
 	   $('#players').keyup(function(){
@@ -64,6 +70,7 @@
    var isEveryNameEntered = false;
    var editSettings = false;
    var canTippsBeEqualStitches = false;
+   var isImpressumShown = false;
   
    
 
@@ -85,6 +92,34 @@
     	$('#playerTwo').hide();
     	$('#playerOne').hide();
     };
+
+	function toogleImpressum() {
+		console.log("toggleImpressum impressum: " + isImpressumShown);
+		if (isImpressumShown) {
+			hideImpressum();
+			isImpressumShown = false;
+			if (players > 0 && isEveryNameEntered) {
+				showGameBlock();
+			} else {
+			showSettings();
+			}
+		} else {
+			hideSettings();
+			hideGameBlock();
+			showImpressum();
+			isImpressumShown = true;
+		}
+	}
+
+	function showImpressum() {
+		$('#navImpressum').text("Zurück");
+		$('#impressum').show();
+	};
+
+	function hideImpressum() {
+		$('#impressum').hide();
+		$('#navImpressum').text("Impressum");
+	}
     
     function toggleNavBarButton() {
     	hideOtherSettings();
@@ -93,11 +128,11 @@
     	} else {
         	showSettings();
     	}
-    }
+    };
     
     function hideOtherSettings() {
     	$('#hiddenSettings').hide();
-    }
+    };
     
     function openGameBlock() {
     	if (isEveryNameEntered) {
@@ -106,7 +141,7 @@
     		showChangePlayerNamesNavBar();
     		$('#changePlayerNames').text("Spielernamen ändern");
     	}
-    }
+    };
     
 
     
@@ -250,6 +285,8 @@
    		
  	    hidePlayerInputWarnings();
 
+		 
+
    		switch (players) {
    		case "3":
    	    	$('#playerThree').show();
@@ -285,6 +322,7 @@
    	    default:
    	    	hidePlayerInputs();
    		}
+
    	};
 
    	function checkNumber() {
@@ -292,7 +330,7 @@
    			$('#wrongNumber').hide();
    	   		showPlayerNameInputs();
    	   		$('#startGame').show();
-   	   		$('#yourNames').show();  	   	
+   	   		$('#yourNames').show();
    		}
    		else {
    			console.log(players + " is not a valid player number");

@@ -196,18 +196,24 @@ input:checked + .slider:before {
 }
 
 #wizardIcon {
-	width: 25px;
-	height: 25px;
+	width: 100px;
+	height: 100px;
+}
+
+#impressum {
+	padding: 50px;
+	padding-bottom: 150px;
 }
 
 #wrongNumber, #startGame, #playerOne, 
 #playerTwo, #playerThree, #playerFour, 
 #playerFive, #playerSix, #warningPlayerOne, 
 #warningPlayerTwo, #warningPlayerThree, #warningPlayerFour, 
-#warningPlayerFive, #warningPlayerSix, #changePlayerNames,
-#gameblock, #yourNames {
+#warningPlayerFive, #warningPlayerSix,
+#gameblock, #yourNames, #impressum {
 	display: none;
 }
+
 
 @media (max-width: 1200px) {
 	.btn-facebook {
@@ -226,10 +232,20 @@ input:checked + .slider:before {
 
 @media (max-width: 767px) {
 	.btn-secondary {
-		width: 50%;
+		width: 33%;
 	}
 	.center {
 		width: 95%;
+	}
+	#wizardIcon {
+		height: 50px;
+		width: 50px;
+	}
+	h1 {
+		font-size: 25px;
+	}
+	input[type=text], #players  {
+		padding: 6px 10px;
 	}
 }
 
@@ -241,5 +257,29 @@ input:checked + .slider:before {
 	.btn-googleplay {
 		float: none;
 		margin-left: 0px;
+	}
+	.btn-secondary {
+		font-size: 12px;
+		padding-left: 1px;
+		padding-right: 1px;
+	}
+	.nav-justified>li>a {
+    	margin-bottom: 0px; 
+	}
+	#impressum {
+		padding: 25px;
+		padding-bottom: 100px;
+	}
+	.big {
+		font-size: 10px;
+	}
+	p {
+		font-size: 12px;
+	}
+}
+
+@media (max-width: 350px) {
+	.big {
+		font-size: 9px;
 	}
 }

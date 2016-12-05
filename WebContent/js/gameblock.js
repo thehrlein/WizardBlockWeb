@@ -1,7 +1,12 @@
-
+  // Event Listener - wenn sich die Fenstergröße verändert
+	window.addEventListener('resize', changeViews);
 	
 	$(window).on("load", function() {
 		console.log("gameblock js geladen!");
+
+	changeViews();
+	$( "#changePlayerNames" ).hide();
+
 						
 	function updateNames() {
 		var playerOne = $('#playerNameInputOne').val();
@@ -32,13 +37,7 @@
 
 	
 	
-	function hideGameBlockWarning() {
-		$('#gameBlockWarning').hide();
-	}
 	
-	function showGameBlockWarning() {
-		$('#gameBlockWarning').show();
-	}
 	
 	
     function hideUnusedPlayerInputs() {
@@ -66,7 +65,7 @@
     	}
     };
     
-	
+});	
 	
 	
 	
@@ -95,6 +94,15 @@
 	var oldAddP5 = 0;
 	var oldAddP6 = 0;
 
+
+   function changeViews() {
+	   if ($(window).width() < 750) {
+		   $('#changePlayerNames').text("Namen ändern");
+		   
+		} else {
+			 $('#changePlayerNames').text("Spielernamen ändern");
+		}
+   }
 
 
 	function checkIfEnteredStitchesAreEqualGameRound() {
@@ -238,6 +246,14 @@
 		alreadyAddedP5 = false;
 		alreadyAddedP6 = false;
 	};
+
+	function hideGameBlockWarning() {
+		$('#gameBlockWarning').hide();
+	}
+	
+	function showGameBlockWarning() {
+		$('#gameBlockWarning').show();
+	}
 
 
 	
@@ -509,12 +525,14 @@
 	}
 	
 
+	
+
 
 	ko.applyBindings(new WizardBlock());
 	
 	
 	
-});
+
 
 
 

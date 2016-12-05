@@ -57,4 +57,20 @@ td > input {
 		padding-left: 0px;
 		padding-right: 0px;
 	}
+	.big {
+		font-size: 12px;
+	}
+}
+
+
+@media (max-width: 500px) {
+	.big {
+		font-size: 10px;
+	}
+}
+
+@media (max-width: 400px) {
+	.big {
+		font-size: 9px;
+	}
 }
